@@ -2,7 +2,7 @@ package com.tharanga.collection;
 
 public class DemoCollection {
 
-	public void check() {
+	public  static void main(String args[]) {
 		System.out.println("inside a check");
 	}
 }
