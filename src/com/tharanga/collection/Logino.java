@@ -1,0 +1,84 @@
+ package com.tharanga.collection;
+import java.io.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+/*
+
+ * Servlet implementation class Logino
+ */
+@WebServlet("/Logino")
+public class Logino extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Logino() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	
+		PrintWriter out = response.getWriter();
+		
+		doGet(request, response);
+		
+		
+		String name = request.getParameter("name");
+		String pass = request.getParameter("pass");
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vinubc","root","root");
+			//Statement  stmt = con.createStatement();
+			PreparedStatement stmt=con.prepareStatement("select *from login where username=? and userpass=? ");
+			stmt.setString(1,name);
+			stmt.setString(2,pass);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next())
+				{	
+					HttpSession session = request.getSession();
+					session.setAttribute("name",name);
+				    response.sendRedirect("Welcomeuser.jsp");
+				}
+				else
+				{
+					
+				     out.println(" your username or password is wrong\n");
+				}
+			
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	
+	}
+
+}
