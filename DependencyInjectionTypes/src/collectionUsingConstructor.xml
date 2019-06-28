@@ -1,0 +1,33 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="e"
+		class="com.taranga.collectionUsingConstructor.Question">
+		<constructor-arg value="12" type="int"></constructor-arg>
+		<constructor-arg value="what is spring"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="a1" />
+				<ref bean="a2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="a1"
+		class="com.taranga.collectionUsingConstructor.Answer">
+		<constructor-arg value="13" type="int"></constructor-arg>
+		<constructor-arg
+			value="spring is a lightweight framework"></constructor-arg>
+		<constructor-arg value="noor"></constructor-arg>
+	</bean>
+
+	<bean id="a2"
+		class="com.taranga.collectionUsingConstructor.Answer">
+		<constructor-arg value="14" type="int"></constructor-arg>
+		<constructor-arg
+			value="spring is a framework of frameworks"></constructor-arg>
+		<constructor-arg value="sahana"></constructor-arg>
+	</bean>
+
+</beans>

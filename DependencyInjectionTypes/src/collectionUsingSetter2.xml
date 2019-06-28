@@ -1,0 +1,34 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	
+<bean id="c" class="com.tharanga.collectionUsingSetter.Test2">
+	<property name="fruits">
+		<util:list list-class="java.util.Vector">
+			<value>apple</value>
+			<value>orange</value>
+		</util:list>
+	</property>
+	
+	<property name="criketers">
+		<util:set set-class="java.util.TreeSet"> 
+			<value>sachin</value>
+			<value>Kohli</value>
+			<value>dhoni</value>
+		</util:set>
+	</property>
+	<property name="cc">
+		<util:map map-class="java.util.Hashtable">
+			<entry key="India" value="Delhi" />
+			<entry key="Pak" value="islamabad" />
+			<entry key="SriLanka" value="Colombo" />
+			</util:map>
+	</property>
+	
+</bean>
+</beans>

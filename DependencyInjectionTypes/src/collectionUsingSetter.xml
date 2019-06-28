@@ -1,0 +1,29 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	
+<bean id="c" class="com.tharanga.collectionUsingSetter.Test">
+		
+	<property name="fruits"> 
+	 <list> 
+	 	<value>Apple</value>
+	 	 <value>mangoo</value> 
+	  </list> 
+	</property>
+		 <property name="criketers"> 
+			 <set> 
+			 <value>sachin</value>
+			  <value>Kohli</value> 
+				<value>sachin</value> 
+			</set> 
+		</property> 
+	<property name="cc"> 
+			<map> 
+			<entry key="India" value="Delhi" /> 
+			<entry key="Pak" value="islamabad" /> 
+			<entry key="SriLanka" value="Colombo" />
+			 </map>
+	 </property>
+
+</bean>
+</beans>

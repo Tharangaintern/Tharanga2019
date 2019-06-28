@@ -1,0 +1,19 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+			"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="e" class="com.taranga.dependentObject.Employee">
+		<constructor-arg value="11" type="int"></constructor-arg>
+		<constructor-arg value="noor"></constructor-arg>
+		<constructor-arg>
+			<ref bean="a" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="a" class="com.taranga.dependentObject.Address">
+		<constructor-arg value="Tumkur"></constructor-arg>
+		<constructor-arg value="Karnataka"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+
+</beans>
